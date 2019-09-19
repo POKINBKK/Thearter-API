@@ -208,7 +208,7 @@ Request example
 }
 ```
 
-### Reserve
+### Cancel
 URL : `/cancel`
 
 Method : `POST`
