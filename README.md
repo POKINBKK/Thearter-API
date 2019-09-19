@@ -111,7 +111,9 @@ Request example
 
 ```json
 {
-  "movieName": "The Amazing Spider-Man"
+  "movieName": "The Amazing Spider-Man",
+  "movieThumbnail": "img.thumbnails",
+  "movieDescription": "It's story",
 }
 ```
 
@@ -125,7 +127,9 @@ Request example
 ```json
 {
   "movieId": "3",
-  "movieName": "The Amazing Spider-Man"
+  "movieName": "The Amazing Spider-Man",
+  "movieThumbnail": "img.thumbnails",
+  "movieDescription": "It's story",
 }
 ```
 
