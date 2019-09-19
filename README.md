@@ -214,24 +214,6 @@ Request example
 }
 ```
 
-### Cancel
-URL : `/cancel`
-
-Method : `POST`
-
-Request example
-
-```json
-{
-  "username": "username",
-  "movieId": "1",
-  "theaterId": "1",
-  "time": "13.00",
-  "date": "12-sep-2018",
-  "seats": ["A1", "A2"]
-}
-```
-
 ### User History
 URL : `/history`
 
