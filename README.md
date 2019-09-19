@@ -1,6 +1,12 @@
 # Thearter-API
 Repository for Service Oriented Programming | ITKMITL 2019
 
+## Business Flow
+
+<p align="center">
+    <img src="ReadmeSrc/BusinessFlow.png" >
+</p>
+
 ## Usage
 
 ### List all Showtimes
