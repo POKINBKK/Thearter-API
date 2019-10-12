@@ -24,6 +24,7 @@ public class CinemaController {
 //    public List<Showtime> getAllShowtime(){
 //
 //    }
+
     @GetMapping("/{name}")
     public List<Movie> see(@PathVariable String name){
         return cinemaService.findMovie(name);

@@ -1,11 +1,16 @@
+/*
+This Class is For Movie Model included
+movieId for ID
+movieName for Name
+movieThumbnail for Picture of Movie
+movieDescription for Short Description of Movie
+*/
+
 package com.theaterapi.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Data
 @Document(collection = "movie")
