@@ -1,6 +1,6 @@
 /*
 This Class is For Showtime Model included
-showtimeId for ID
+id for Auto Generated ID
 movieId for Query Movie's Data from MovieDB
 theaterId for Query theater's Data from theaterDB
 date for Date of this Showtime
@@ -17,10 +17,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Data
-@Document(collection = "showtime")
 public class Showtime {
     @Id
-    private int showtimeId;
+    private String id;
     private int movieId;
     private int theaterId;
     private String date;

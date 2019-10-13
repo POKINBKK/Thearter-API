@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface MovieRepository extends MongoRepository<Movie, String> {
-        List<Movie> findByMovieName(String name);
+        List<Movie> findByMovieId(String id);
 }
