@@ -34,21 +34,21 @@ public class TheaterController {
         return ResponseEntity.ok(theater);
     }
 
-    //create new movie
+    //create new theater
     @PostMapping()
-    public ResponseEntity<?> postMovie(@RequestBody Theater body) {
+    public ResponseEntity<?> postTheater(@RequestBody Theater body) {
         Theater theater = theaterService.createTheater(body);
         return ResponseEntity.status(HttpStatus.CREATED).body(theater);
     }
 
-    //edit movie
+    //edit Theater
     @PutMapping("/{id}")
     public ResponseEntity<?> putTheater(@PathVariable String id, @RequestBody Theater body) {
         Optional<?> theater = theaterService.updateTheater(id, body);
         return ResponseEntity.ok(theater);
     }
 
-    //delete movie
+    //delete Theater
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable String id) {
         if(!theaterService.deleteTheater(id)) {

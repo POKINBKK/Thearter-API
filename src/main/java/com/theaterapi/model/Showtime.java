@@ -20,11 +20,27 @@ import java.util.List;
 public class Showtime {
     @Id
     private String id;
-    private int movieId;
-    private int theaterId;
+    private String movieId;
+    private String theaterId;
     private String date;
     private String time;
     private Boolean status;
     private List<String> availableSeats;
     private List<String> unavailableSeats;
+
+    public void setAvailableSeats(List<String> seats){
+        this.availableSeats = seats;
+    }
+
+    public void setUnavailableSeats(List<String> seats){
+        this.unavailableSeats = seats;
+    }
+
+    public String getMovieId(){
+        return this.movieId;
+    }
+
+    public String getTheaterId(){
+        return this.theaterId;
+    }
 }

@@ -24,4 +24,8 @@ public class Theater {
     public void setId(String id) {
         this.id = id;
     }
+
+    public List<String> getSeats(){
+        return this.seats;
+    }
 }
