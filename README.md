@@ -10,7 +10,7 @@ Repository for Service Oriented Programming | ITKMITL 2019
 ## Usage
 
 ### List all Showtimes
-URL : `/showtimes`
+URL : `/api/showtime`
 
 Method : `GET`
 
@@ -19,97 +19,216 @@ Response example
 ```json
 [
   {
+    "id": "5da32f48accef147705f4dd4",
     "movieId": "1",
-    "movieName": "The Avengers",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
     "theaterId": "1",
-    "times": ["10.30", "13.00"],
-    "date": "12-sep-2019"
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "11.00",
+    "date": "4-OCT-2019",
+    "status": true
   },
   {
+    "id": "5da32fc4accef147705f4dd5",
     "movieId": "1",
-    "movieName": "The Avengers",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
+    "theaterId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "14.00",
+    "date": "4-OCT-2019",
+    "status": true
+  },
+  {
+    "id": "5da32fcfaccef147705f4dd6",
+    "movieId": "1",
     "theaterId": "2",
-    "time": ["11.00", "14.00"],
-    "date": "12-sep-2019"
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "12.00",
+    "date": "4-OCT-2019",
+    "status": true
   },
   {
-    "movieId": "2",
-    "movieName": "The Terminal",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
-    "theaterId": "3",
-    "time": ["10.30", "13.00"],
-    "date": "12-sep-2019"
-  }
-]
-```
-
-### List all Showtimes by Theater
-URL : `/showtimes/{theaterId}`
-
-Method : `GET`
-
-Response example
-
-```json
-[
-  {
+    "id": "5da32fd8accef147705f4dd7",
     "movieId": "1",
-    "movieName": "The Avengers",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
-    "theaterId": "1",
-    "times": ["10.30", "13.00"],
-    "date": "12-sep-2019"
-  },
-  {
-    "movieId": "2",
-    "movieName": "The Terminal",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
-    "theaterId": "1",
-    "time": ["16.20", "19.00"],
-    "date": "12-sep-2019"
-  }
-]
-```
-
-### List all Showtimes by Movie
-URL : `/showtimes/{movieId}`
-
-Method : `GET`
-
-Response example
-
-```json
-[
-  {
-    "movieId": "1",
-    "movieName": "The Avengers",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
-    "theaterId": "1",
-    "times": ["10.30", "13.00"],
-    "date": "12-sep-2019"
-  },
-  {
-    "movieId": "1",
-    "movieName": "The Avengers",
-    "movieThumbnail": "img.thumbnails",
-    "movieDescription": "It's story",
     "theaterId": "2",
-    "time": ["11.00", "14.00"],
-    "date": "12-sep-2019"
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "17.00",
+    "date": "4-OCT-2019",
+    "status": true
   }
 ]
 ```
 
-### Add Movie
-URL : `/add-movie`
+### List all Showtimes by TheaterId
+URL : `/api/showtimes?theater={theaterId}`
+
+Method : `GET`
+
+Response example
+
+```json
+[
+  {
+    "id": "5da32f48accef147705f4dd4",
+    "movieId": "1",
+    "theaterId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "11.00",
+    "date": "4-OCT-2019",
+    "status": true
+  },
+  {
+    "id": "5da32fc4accef147705f4dd5",
+    "movieId": "1",
+    "theaterId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "14.00",
+    "date": "4-OCT-2019",
+    "status": true
+  }
+]
+```
+
+### List all Showtimes by MovieId
+
+URL : `/api/showtime?movie={movieId}`
+
+Method : `GET`
+
+Response example
+
+```json
+[
+  {
+    "id": "5da32f48accef147705f4dd4",
+    "movieId": "1",
+    "theaterId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "11.00",
+    "date": "4-OCT-2019",
+    "status": true
+  },
+  {
+    "id": "5da32fc4accef147705f4dd5",
+    "movieId": "1",
+    "theaterId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "14.00",
+    "date": "4-OCT-2019",
+    "status": true
+  },
+  {
+    "id": "5da32fcfaccef147705f4dd6",
+    "movieId": "1",
+    "theaterId": "2",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "12.00",
+    "date": "4-OCT-2019",
+    "status": true
+  },
+  {
+    "id": "5da32fd8accef147705f4dd7",
+    "movieId": "1",
+    "theaterId": "2",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film",
+    "time": "17.00",
+    "date": "4-OCT-2019",
+    "status": true
+  }
+]
+```
+
+### List all Movie Information
+URL : `/api/movie`
+
+Method : `GET`
+
+Response example
+
+```json
+[
+  {
+    "id": "5da321b7accef147705f4dd0",
+    "movieId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film"
+  },
+  {
+    "id": "5da326b8accef147705f4dd2",
+    "movieId": "2",
+    "movieName": "The Matrix",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "24-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film"
+  }
+]
+```
+
+### Show Movie Information by MovieId
+URL : `/api/movie/{movieId}`
+
+Method : `GET`
+
+Response example
+
+```json
+[
+  {
+    "id": "5da321b7accef147705f4dd0",
+    "movieId": "1",
+    "movieName": "JOKER",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "3-OCT-2019",
+    "movieLength": "120",
+    "movieDescription": "This is Short Description of This Film"
+  }
+]
+```
+
+### Add Movie Information
+URL : `/api/movie`
 
 Method : `POST`
 
@@ -117,30 +236,70 @@ Request example
 
 ```json
 {
-  "movieName": "The Amazing Spider-Man",
-  "movieThumbnail": "img.thumbnails",
-  "movieDescription": "It's story",
+  "movieId": "2",
+  "movieName": "The Matrix",
+  "movieThumbnail": "picpath",
+  "movieReleaseDate": "24-OCT-2019",
+  "movieLength": "104",
+  "movieDescription": "This is Short Description of This Film"
 }
 ```
 
-### Edit Movie
-URL : `/edit-movie`
-
-Method : `POST`
-
-Request example
+Response example
 
 ```json
 {
-  "movieId": "3",
-  "movieName": "The Amazing Spider-Man",
-  "movieThumbnail": "img.thumbnails",
-  "movieDescription": "It's story",
+  "id": "5da32334accef147705f4dd1",
+  "movieId": "2",
+  "movieName": "The Matrix",
+  "movieThumbnail": "picpath",
+  "movieReleaseDate": "24-OCT-2019",
+  "movieLength": "104",
+  "movieDescription": "This is Short Description of This Film"
 }
 ```
 
-### Delete Movie
-URL : `/delete-movie`
+### Edit Movie Information
+URL : `/api/movie/{id}`
+
+Method : `PUT`
+
+Request example
+
+```json
+{
+  "movieId": "2",
+  "movieName": "The Matrix",
+  "movieThumbnail": "picpath",
+  "movieReleaseDate": "24-OCT-2019",
+  "movieLength": "120",
+  "movieDescription": "This is Short Description of This Film"
+}
+```
+
+Response example
+
+```json
+{
+  "id": "5da32334accef147705f4dd1",
+  "movieId": "2",
+  "movieName": "The Matrix",
+  "movieThumbnail": "picpath",
+  "movieReleaseDate": "24-OCT-2019",
+  "movieLength": "120",
+  "movieDescription": "This is Short Description of This Film"
+}
+```
+
+### Delete Movie Information
+URL : `/api/movie/{id}`
+
+Method : `DELETE`
+
+
+
+### Add Theater
+URL : `/api/theater`
 
 Method : `POST`
 
@@ -148,12 +307,23 @@ Request example
 
 ```json
 {
-  "movieId": "3"
+  "theaterId": "3",
+  "seats": ["A1", "A2", ..., "B10"]
+}
+```
+
+Response example
+
+```json
+{
+  "id": "5da32a9eaccef147705f4dd3",
+  "theaterId": "3",
+  "seats": ["A1", "A2", ..., "B10"]
 }
 ```
 
 ### Add Showtime
-URL : `/add-showtime`
+URL : `/api/showtime`
 
 Method : `POST`
 
@@ -163,10 +333,28 @@ Request example
 {
   "movieId": "1",
   "theaterId": "1",
-  "times": ["13.00", "17.00"],
-  "date": "13-sep-2019"
+  "date": "4-OCT-2019",
+  "time": "11.00",
+  "status": true
 }
 ```
+
+Response example
+
+```json
+{
+  "id": "5da32f48accef147705f4dd4",
+  "movieId": "1",
+  "theaterId": "1",
+  "date": "4-OCT-2019",
+  "time": "11.00",
+  "status": true,
+  "availableSeats": ["A1", "A2", ..., "B10"],
+  "unavailableSeats": null
+}
+```
+
+## Under Development Function
 
 ### Delete Showtime
 URL : `/delete-showtime`
