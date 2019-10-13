@@ -43,4 +43,24 @@ public class Showtime {
     public String getTheaterId(){
         return this.theaterId;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

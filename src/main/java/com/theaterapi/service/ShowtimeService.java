@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShowtimeService {
@@ -30,5 +31,24 @@ public class ShowtimeService {
 
     public Showtime createShowtime(Showtime showtime) {
         return showtimeRepository.save(showtime);
+    }
+
+    public Optional<Showtime> updateShowtime(String id, Showtime showtime) {
+        Optional<Showtime> showtimeOpt = showtimeRepository.findById(id);
+        if(!showtimeOpt.isPresent()) {
+            return showtimeOpt;
+        }
+        showtime.setId(id);
+        return Optional.of(showtimeRepository.save(showtime));
+    }
+
+    public boolean deleteShowtime(String id) {
+        try {
+            showtimeRepository.deleteById(id);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }

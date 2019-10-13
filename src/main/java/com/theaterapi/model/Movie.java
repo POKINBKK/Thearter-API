@@ -35,4 +35,28 @@ public class Movie {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public String getMovieThumbnail() {
+        return movieThumbnail;
+    }
+
+    public String getMovieReleaseDate() {
+        return movieReleaseDate;
+    }
+
+    public String getMovieLength() {
+        return movieLength;
+    }
+
+    public String getMovieDescription() {
+        return movieDescription;
+    }
 }
