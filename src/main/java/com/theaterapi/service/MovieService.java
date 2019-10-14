@@ -2,10 +2,9 @@ package com.theaterapi.service;
 
 import com.theaterapi.model.Movie;
 import com.theaterapi.model.Showtime;
-import com.theaterapi.model.User;
+//import com.theaterapi.model.User;
 import com.theaterapi.repository.MovieRepository;
 import com.theaterapi.repository.ShowtimeRepository;
-import com.theaterapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;

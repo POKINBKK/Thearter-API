@@ -4,7 +4,7 @@ package com.theaterapi.controller;
 
 import com.theaterapi.model.Movie;
 import com.theaterapi.model.Showtime;
-import com.theaterapi.model.User;
+//import com.theaterapi.model.User;
 import com.theaterapi.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
