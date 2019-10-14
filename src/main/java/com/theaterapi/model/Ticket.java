@@ -10,11 +10,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 public class Ticket {
     @Id
     private String username;
+    @NotNull
     private int movieId;
+    @NotNull
     private int theaterId;
     private String time;
     private String date;

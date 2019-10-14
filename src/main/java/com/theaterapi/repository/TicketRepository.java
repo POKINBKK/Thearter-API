@@ -1,6 +1,5 @@
 package com.theaterapi.repository;
 
-import com.theaterapi.model.Movie;
 import com.theaterapi.model.Ticket;
 
 import java.util.List;
@@ -9,6 +8,5 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TicketRepository extends MongoRepository<Ticket, String> {
-
-	List<Ticket> findByUserId(String id);
+	List<Ticket> findByUsername(String username);
 }
