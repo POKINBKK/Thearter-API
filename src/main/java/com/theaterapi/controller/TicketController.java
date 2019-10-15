@@ -22,10 +22,16 @@ public class TicketController {
 	@Autowired
 	private TicketService ticketService;
 
-//	Ticket History by user
+// all ticket	
+	@GetMapping()
+    public ResponseEntity<?> getCustomers() {
+        List<Ticket> ticket = ticketService.retrieveTickets();
+        return ResponseEntity.ok(ticket);
+    }
 
-	@GetMapping(params = "username")
-	public ResponseEntity<?> getHistory(@RequestParam String username) {
+//	Ticket History by user
+	@GetMapping(params = "/{username}")
+	public ResponseEntity<?> getHistory(@PathVariable String username) {
 		List<Ticket> ticket = ticketService.retrieveTickeybyUsername(username);
 		if (ticket.equals(null)) {
 			return ResponseEntity.badRequest().build();

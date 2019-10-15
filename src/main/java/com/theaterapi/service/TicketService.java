@@ -16,6 +16,10 @@ public class TicketService {
 		this.ticketRepository = ticketRepository;
 	}
 
+	public List<Ticket> retrieveTickets() {
+		return ticketRepository.findAll();
+	}
+
 	public List<Ticket> retrieveTickeybyUsername(String username) {
 		return this.ticketRepository.findByUsername(username);
 	}
