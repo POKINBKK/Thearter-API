@@ -32,4 +32,34 @@ public class Ticket {
 //        private String date;
 //        private List<String> seats;
 //    }
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public int getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+	public int getTheaterId() {
+		return theaterId;
+	}
+	public void setTheaterId(int theaterId) {
+		this.theaterId = theaterId;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 }
