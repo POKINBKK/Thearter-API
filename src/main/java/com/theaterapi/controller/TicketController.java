@@ -1,6 +1,8 @@
 package com.theaterapi.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,30 +12,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.theaterapi.model.User;
+import com.theaterapi.service.UserService;
 
-import com.theaterapi.model.Ticket;
-import com.theaterapi.service.TicketService;
 
 @RestController
 @RequestMapping("/ticket")
 public class TicketController {
 	@Autowired
-	private TicketService ticketService;
+	private UserService userService;
 
 // all ticket	
 	@GetMapping()
     public ResponseEntity<?> getCustomers() {
-        List<Ticket> ticket = ticketService.retrieveTickets();
+        List<User> ticket = userService.retrieveTickets();
         return ResponseEntity.ok(ticket);
     }
 
 //	Ticket History by user
-	@GetMapping(params = "/{username}")
+	@GetMapping("/{username}")
 	public ResponseEntity<?> getHistory(@PathVariable String username) {
-		List<Ticket> ticket = ticketService.retrieveTickeybyUsername(username);
-		if (ticket.equals(null)) {
+		Optional<?>ticket = userService.retrieveTickeybyUsername(username);
+		if (!ticket.isPresent()) {
 			return ResponseEntity.badRequest().build();
 		}
 		return ResponseEntity.ok(ticket);
@@ -41,9 +42,10 @@ public class TicketController {
 
 //	Add ticket
 	@PostMapping()
-	public ResponseEntity<?> postTicket(@RequestBody Ticket body) {
-		Ticket ticket = ticketService.createTicket(body);
-		return ResponseEntity.status(HttpStatus.CREATED).body(ticket);
+	public ResponseEntity<?> postTicket(@RequestBody User body) {
+		User ticket = userService.createTicket(body);
+		return new ResponseEntity<User>(ticket, HttpStatus.OK);
+//		return ResponseEntity.status(HttpStatus.CREATED).body(ticket);
 	}
 
 }
