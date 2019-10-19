@@ -33,9 +33,11 @@ public class UserService {
 		Ticket tmp_ticket = new Ticket(body.getTickets().get(0).getMovieId(), body.getTickets().get(0).getTheaterId(), body.getTickets().get(0).getTime(), body.getTickets().get(0).getDate(), body.getTickets().get(0).getSeats());
 		
 		Optional<User> userOpt = userRepository.findById(body.getUsername());
-		// add old value
-		for (Ticket temp : userOpt.get().getTickets()) {
-			tmp_list_ticket.add(temp);
+		if(userOpt.isPresent()){
+			// add old value
+			for (Ticket temp : userOpt.get().getTickets()) {
+				tmp_list_ticket.add(temp);
+			}
 		}
 		// add new value
 		tmp_list_ticket.add(tmp_ticket);

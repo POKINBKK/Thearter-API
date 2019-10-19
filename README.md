@@ -9,6 +9,8 @@ Repository for Service Oriented Programming | ITKMITL 2019
 
 ## Usage
 
+# Showtime Service
+
 ### List all Showtimes
 URL : `/api/showtime`
 
@@ -201,6 +203,45 @@ URL : `/api/showtime/{date}`
 
 Method : `GET`
 
+### Add Showtime
+URL : `/api/showtime`
+
+Method : `POST`
+
+Request example
+
+```json
+{
+  "movieId": "1",
+  "theaterId": "1",
+  "date": "4-OCT-2019",
+  "time": "11.00",
+  "status": true
+}
+```
+
+Response example
+
+```json
+{
+  "id": "5da32f48accef147705f4dd4",
+  "movieId": "1",
+  "theaterId": "1",
+  "date": "4-OCT-2019",
+  "time": "11.00",
+  "status": true,
+  "availableSeats": ["A1", "A2", ..., "B10"],
+  "unavailableSeats": null
+}
+```
+
+### Delete Showtime by Id
+URL : `/api/showtime?id={id}`
+
+Method : `DELETE`
+
+# Movie Service
+
 ### List all Movie Information
 URL : `/api/movie`
 
@@ -322,6 +363,7 @@ URL : `/api/movie/{id}`
 Method : `DELETE`
 
 
+# Theater Service
 
 ### Add Theater
 URL : `/api/theater`
@@ -347,57 +389,10 @@ Response example
 }
 ```
 
-### Add Showtime
-URL : `/api/showtime`
-
-Method : `POST`
-
-Request example
-
-```json
-{
-  "movieId": "1",
-  "theaterId": "1",
-  "date": "4-OCT-2019",
-  "time": "11.00",
-  "status": true
-}
-```
-
-Response example
-
-```json
-{
-  "id": "5da32f48accef147705f4dd4",
-  "movieId": "1",
-  "theaterId": "1",
-  "date": "4-OCT-2019",
-  "time": "11.00",
-  "status": true,
-  "availableSeats": ["A1", "A2", ..., "B10"],
-  "unavailableSeats": null
-}
-```
-
-## Under Development Function
-
-### Delete Showtime
-URL : `/api/showtime`
-
-Method : `POST`
-
-Request example
-
-```json
-{
-  "theaterId": "1",
-  "times": ["13.00", "17.00"],
-  "date": "13-sep-2019"
-}
-```
+# User Service
 
 ### Reserve
-URL : `/reserve`
+URL : `/api/ticket`
 
 Method : `POST`
 
@@ -405,46 +400,46 @@ Request example
 
 ```json
 {
-  "username": "username",
-  "movieId": "1",
-  "theaterId": "1",
-  "time": "13.00",
-  "date": "12-sep-2018",
-  "seats": ["A1", "A2"]
+  "username": "user1",
+  "tickets": [
+    {
+      "movieId":3,
+      "theaterId":1,
+      "time":"12.00",
+      "date":"4-OCT-2019",
+      "seats":["A1", "A2"]
+      }
+   ]
 }
 ```
 
 ### User History
-URL : `/history`
+URL : `/api/ticket/{username}`
 
-Method : `POST`
-
-Request example
-
-```json
-{
-  "username": "username"
-}
-```
+Method : `GET`
 
 Response example
 
 ```json
-[
-  {
-    "movieId": "1",
-    "theaterId": "1",
-    "time": "13.00",
-    "date": "12-sep-2018",
-    "seats": ["A1", "A2"]
-  },
+{
+  "username": "user1",
+  "tickets": [
     {
-    "movieId": "2",
-    "theaterId": "1",
-    "time": "19.00",
-    "date": "12-sep-2018",
-    "seats": ["A1", "A2"]
-  }
-]
+      "movieId": 1,
+      "theaterId": 1,
+      "time": "12.00",
+      "date": "4-OCT-2019",
+      "seats": ["A1", "A2"]
+    },
+    {
+      "movieId": 2,
+      "theaterId": 1,
+      "time": "16.00",
+      "date": "5-OCT-2019",
+      "seats": ["A1", "A2"]
+    }
+  ]
+}
 ```
+
 
