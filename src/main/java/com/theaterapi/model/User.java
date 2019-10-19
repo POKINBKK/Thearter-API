@@ -13,7 +13,6 @@ import java.util.List;
 @Data
 public class User {
 	@Id
-//	@Indexed(unique=true)
 	private String username;
 	private List<Ticket> tickets;
 	

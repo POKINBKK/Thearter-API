@@ -21,6 +21,10 @@ public class ShowtimeService {
         return showtimeRepository.findAll();
     }
 
+    public Optional<Showtime> retrieveShowtime(String id) {
+        return showtimeRepository.findById(id);
+    }
+
     public List<Showtime> retrieveShowtimebyTheater(String id) {
         return showtimeRepository.findByTheaterId(id);
     }

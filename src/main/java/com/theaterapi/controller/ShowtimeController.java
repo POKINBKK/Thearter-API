@@ -61,6 +61,36 @@ public class ShowtimeController {
         return ResponseEntity.ok(responseList);
     }
 
+    //get showtime by Id
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getShowtime(@PathVariable String id) {
+        //For Retrieve Information
+        Optional<Showtime> showtime = showtimeService.retrieveShowtime(id);
+        List<Movie> movies = movieService.retrieveMovies();
+        //For Response As it could be
+        //For get movie Info by id in loop
+        Movie movie = new Movie();
+        ShowtimeResponse tmpRes = new ShowtimeResponse();
+        tmpRes.setId(showtime.get().getId());
+        tmpRes.setMovieId(showtime.get().getMovieId());
+        tmpRes.setTheaterId(showtime.get().getTheaterId());
+        tmpRes.setDate(showtime.get().getDate());
+        tmpRes.setTime(showtime.get().getTime());
+        tmpRes.setStatus(showtime.get().getStatus());
+        //This Part for movie Information
+        for(Movie tmpMovie: movies){
+            if((tmpMovie.getMovieId()).equals(tmpRes.getMovieId())){
+                movie = tmpMovie;
+            }
+        }
+        tmpRes.setMovieName(movie.getMovieName());
+        tmpRes.setMovieThumbnail(movie.getMovieThumbnail());
+        tmpRes.setMovieReleaseDate(movie.getMovieReleaseDate());
+        tmpRes.setMovieLength(movie.getMovieLength());
+        tmpRes.setMovieDescription(movie.getMovieDescription());
+        return ResponseEntity.ok(tmpRes);
+    }
+
     //get showtime by theaterid /showtime?theater=...
     @GetMapping(params = "theater")
     public ResponseEntity<?> getShowtimebyTheaterId(@RequestParam String theater) {
