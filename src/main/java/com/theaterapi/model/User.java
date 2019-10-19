@@ -7,20 +7,28 @@ package com.theaterapi.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
+
 
 @Data
 public class User {
-    @Id
-    private String username;
-    private List<Ticket> tickets;
+	@Id
+//	@Indexed(unique=true)
+	private String username;
+	private List<Ticket> tickets;
+	
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
 
-    class Ticket {
-        private int movieId;
-        private int theaterId;
-        private String time;
-        private String date;
-        private List<String> seats;
-    }
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 }
