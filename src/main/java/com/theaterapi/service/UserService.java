@@ -29,7 +29,7 @@ public class UserService {
 
 	public User createTicket(User body) {
 		User tmp_user = new User();
-		List<Ticket> tmp_list_ticket = new ArrayList<Ticket>();
+		ArrayList<Ticket> tmp_list_ticket = new ArrayList<Ticket>();
 		Ticket tmp_ticket = new Ticket(body.getTickets().get(0).getMovieId(), body.getTickets().get(0).getTheaterId(), body.getTickets().get(0).getTime(), body.getTickets().get(0).getDate(), body.getTickets().get(0).getSeats());
 		
 		Optional<User> userOpt = userRepository.findById(body.getUsername());

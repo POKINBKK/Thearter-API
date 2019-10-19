@@ -176,6 +176,31 @@ Response example
 ]
 ```
 
+### Get Showtime by Id
+URL : `/api/showtime/{id}`
+
+Method : `GET`
+
+Response example
+
+```json
+{
+    "id": "5da32f48accef147705f4dd4",
+    "movieId": "1",
+    "theaterId": "1",
+    "date": "4-OCT-2019",
+    "time": "11.00",
+    "status": true,
+    "availableSeats": ["A3", "A4", ..., "B10"],
+    "unavailableSeats": ["A1", "A2"]
+}
+```
+
+### Delete All Showtime by Date
+URL : `/api/showtime/{date}`
+
+Method : `GET`
+
 ### List all Movie Information
 URL : `/api/movie`
 
@@ -214,17 +239,17 @@ Method : `GET`
 Response example
 
 ```json
-[
-  {
-    "id": "5da321b7accef147705f4dd0",
-    "movieId": "1",
-    "movieName": "JOKER",
-    "movieThumbnail": "picpath",
-    "movieReleaseDate": "3-OCT-2019",
-    "movieLength": "120",
-    "movieDescription": "This is Short Description of This Film"
-  }
-]
+
+{
+  "id": "5da321b7accef147705f4dd0",
+  "movieId": "1",
+  "movieName": "JOKER",
+  "movieThumbnail": "picpath",
+  "movieReleaseDate": "3-OCT-2019",
+  "movieLength": "120",
+  "movieDescription": "This is Short Description of This Film"
+}
+
 ```
 
 ### Add Movie Information
@@ -357,7 +382,7 @@ Response example
 ## Under Development Function
 
 ### Delete Showtime
-URL : `/delete-showtime`
+URL : `/api/showtime`
 
 Method : `POST`
 
@@ -367,19 +392,6 @@ Request example
 {
   "theaterId": "1",
   "times": ["13.00", "17.00"],
-  "date": "13-sep-2019"
-}
-```
-
-### Delete All Showtime by Date
-URL : `/delete-all-showtime`
-
-Method : `POST`
-
-Request example
-
-```json
-{
   "date": "13-sep-2019"
 }
 ```

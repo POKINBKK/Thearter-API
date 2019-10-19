@@ -9,4 +9,5 @@ import java.util.List;
 public interface ShowtimeRepository extends MongoRepository<Showtime, String> {
     List<Showtime> findByMovieId(String id);
     List<Showtime> findByTheaterId(String id);
+    List<Showtime> deleteByDate(String date);
 }

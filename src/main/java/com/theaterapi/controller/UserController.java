@@ -19,7 +19,7 @@ import com.theaterapi.service.UserService;
 
 @RestController
 @RequestMapping("/ticket")
-public class TicketController {
+public class UserController {
 	@Autowired
 	private UserService userService;
 

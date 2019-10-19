@@ -31,7 +31,7 @@ public class MovieService {
     }
 
     //Get movie by movieId
-    public List<Movie> retrieveMovie(String id) {
+    public Movie retrieveMovie(String id) {
         return movieRepository.findByMovieId(id);
     }
 

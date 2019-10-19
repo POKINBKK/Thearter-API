@@ -30,7 +30,7 @@ public class MovieController {
     //get movie by movieId
     @GetMapping("/{id}")
     public ResponseEntity<?> getMoviebyId(@PathVariable String id) {
-        List<Movie> movie = movieService.retrieveMovie(id);
+        Movie movie = movieService.retrieveMovie(id);
         if(movie.equals(null)) {
             return ResponseEntity.badRequest().build();
         }

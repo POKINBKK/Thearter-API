@@ -55,4 +55,14 @@ public class ShowtimeService {
             return false;
         }
     }
+
+    public boolean deleteShowtimebyDate(String date) {
+        try {
+            showtimeRepository.deleteByDate(date);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
 }
