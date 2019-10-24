@@ -7,12 +7,15 @@ package com.theaterapi.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import java.util.List;
 
 
 @Data
 public class User {
 	@Id
+	@Indexed(unique=true)
 	private String username;
 	private List<Ticket> tickets;
 	

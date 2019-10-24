@@ -20,22 +20,22 @@ public class TheaterService {
 		return theaterRepository.findAll();
 	}
 
-	public List<Theater> retrieveTheater(String id) {
-		return theaterRepository.findByTheaterId(id);
+	public Optional<Theater> retrieveTheater(String id) {
+		return theaterRepository.findById(id);
 	}
 
 	public Theater createTheater(Theater theater) {
 		return theaterRepository.save(theater);
 	}
 
-	public Optional<Theater> updateTheater(String id, Theater theater) {
-		Optional<Theater> theaterOpt = theaterRepository.findById(id);
-		if (!theaterOpt.isPresent()) {
-			return theaterOpt;
-		}
-		theater.setId(id);
-		return Optional.of(theaterRepository.save(theater));
-	}
+//	public Optional<Theater> updateTheater(String id, Theater theater) {
+//		Optional<Theater> theaterOpt = theaterRepository.findById(id);
+//		if (!theaterOpt.isPresent()) {
+//			return theaterOpt;
+//		}
+//		theater.set_id(id);
+//		return Optional.of(theaterRepository.save(theater));
+//	}
 
 	public boolean deleteTheater(String id) {
 		try {

@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/showtime")
+@CrossOrigin(origins = "*")
 public class ShowtimeController {
 
     @Autowired
@@ -39,7 +40,7 @@ public class ShowtimeController {
         Movie movie = new Movie();
         for(Showtime tmp: showtimes){
             ShowtimeResponse tmpRes = new ShowtimeResponse();
-            tmpRes.setId(tmp.getId());
+            tmpRes.setId(tmp.get_id());
             tmpRes.setMovieId(tmp.getMovieId());
             tmpRes.setTheaterId(tmp.getTheaterId());
             tmpRes.setDate(tmp.getDate());
@@ -61,7 +62,7 @@ public class ShowtimeController {
         return ResponseEntity.ok(responseList);
     }
 
-    //get showtime by Id
+    //get showtime by _id
     @GetMapping("/{id}")
     public ResponseEntity<?> getShowtime(@PathVariable String id) {
         //For Retrieve Information
@@ -69,7 +70,7 @@ public class ShowtimeController {
         return ResponseEntity.ok(showtime);
     }
 
-    //get showtime by theaterid /showtime?theater=...
+    //get showtime by theaterid /showtime?theater={theater._id}
     @GetMapping(params = "theater")
     public ResponseEntity<?> getShowtimebyTheaterId(@RequestParam String theater) {
         List<Showtime> showtimes = showtimeService.retrieveShowtimebyTheater(theater);
@@ -80,7 +81,7 @@ public class ShowtimeController {
         Movie movie = new Movie();
         for(Showtime tmp: showtimes){
             ShowtimeResponse tmpRes = new ShowtimeResponse();
-            tmpRes.setId(tmp.getId());
+            tmpRes.setId(tmp.get_id());
             tmpRes.setMovieId(tmp.getMovieId());
             tmpRes.setTheaterId(tmp.getTheaterId());
             tmpRes.setDate(tmp.getDate());
@@ -102,7 +103,7 @@ public class ShowtimeController {
         return ResponseEntity.ok(responseList);
     }
 
-    //get showtime by movieid /showtime?movie=...
+    //get showtime by movieid /showtime?movie={movie._id}
     @GetMapping(params = "movie")
     public ResponseEntity<?> getShowtimebyMovieId(@RequestParam String movie) {
         List<Showtime> showtimes = showtimeService.retrieveShowtimebyMovie(movie);
@@ -113,7 +114,7 @@ public class ShowtimeController {
         Movie movieDetail = new Movie();
         for(Showtime tmp: showtimes){
             ShowtimeResponse tmpRes = new ShowtimeResponse();
-            tmpRes.setId(tmp.getId());
+            tmpRes.setId(tmp.get_id());
             tmpRes.setMovieId(tmp.getMovieId());
             tmpRes.setTheaterId(tmp.getTheaterId());
             tmpRes.setDate(tmp.getDate());
@@ -140,20 +141,29 @@ public class ShowtimeController {
     public ResponseEntity<?> postShowtime(@RequestBody Showtime body) {
         Showtime tmp = body;
         String theaterid = tmp.getTheaterId();
-        List<Theater> theater = theaterService.retrieveTheater(theaterid);
-        tmp.setAvailableSeats((theater.get(0)).getSeats());
+        List<Showtime> showtimes = showtimeService.retrieveShowtimes();
+        for(Showtime tmpshow: showtimes){
+            if((tmpshow.getTheaterId()).equals(body.getTheaterId()) && (tmpshow.getDate()).equals(body.getDate()) && (tmpshow.getTime()).equals(body.getTime())){
+                return ResponseEntity.badRequest().build();
+            }
+        }
+        Optional<Theater> theater = theaterService.retrieveTheater(theaterid);
+        if(theater.equals(null)) {
+            return ResponseEntity.badRequest().build();
+        }
+        tmp.setAvailableSeats(theater.get().getSeats());
         Showtime showtime = showtimeService.createShowtime(tmp);
         return ResponseEntity.status(HttpStatus.CREATED).body(showtime);
     }
 
     //edit Showtime
-    @PutMapping("/{id}")
-    public ResponseEntity<?> putShowtime(@PathVariable String id, @RequestBody Showtime body) {
-        Optional<?> showtime = showtimeService.updateShowtime(id, body);
-        return ResponseEntity.ok(showtime);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<?> putShowtime(@PathVariable String id, @RequestBody Showtime body) {
+//        Optional<?> showtime = showtimeService.updateShowtime(id, body);
+//        return ResponseEntity.ok(showtime);
+//    }
 
-    //delete Showtime
+    //delete Showtime by _id api/showtime?id={_id}
     @DeleteMapping(params = "id")
     public ResponseEntity<?> deleteShowtime(@RequestParam String id) {
         if(!showtimeService.deleteShowtime(id)) {
@@ -162,7 +172,7 @@ public class ShowtimeController {
         return ResponseEntity.ok().build();
     }
 
-    //delete Showtime by Date
+    //delete Showtime by Date api/showtime?date={date}
     @DeleteMapping(params = "date")
     public ResponseEntity<?> deleteShowtimebyDate(@RequestParam String date) {
         if(!showtimeService.deleteShowtimebyDate(date)) {
@@ -173,7 +183,7 @@ public class ShowtimeController {
 
     //class for response of showtime
     private class ShowtimeResponse {
-        private String id;
+        private String _id;
         private String movieId;
         private String theaterId;
         private String movieName;
@@ -186,11 +196,11 @@ public class ShowtimeController {
         private Boolean status;
 
         public String getId() {
-            return id;
+            return _id;
         }
 
         public void setId(String id) {
-            this.id = id;
+            this._id = id;
         }
 
         public String getMovieId() {

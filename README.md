@@ -188,13 +188,12 @@ Response example
 ```json
 {
     "id": "5da32f48accef147705f4dd4",
-    "movieId": "1",
-    "theaterId": "1",
+    "movieId": "5da32f48accef147705f4dd4",
+    "theaterId": "5da32f48accef147705f4dd4",
     "date": "4-OCT-2019",
     "time": "11.00",
     "status": true,
-    "availableSeats": ["A3", "A4", ..., "B10"],
-    "unavailableSeats": ["A1", "A2"]
+    "availableSeats": ["A3", "A4", ..., "B10"]
 }
 ```
 
@@ -212,8 +211,8 @@ Request example
 
 ```json
 {
-  "movieId": "1",
-  "theaterId": "1",
+  "movieId": "5da32f48accef147705f4dd4",
+  "theaterId": "5da32fcfaccef147705f4dd6",
   "date": "4-OCT-2019",
   "time": "11.00",
   "status": true
@@ -225,8 +224,8 @@ Response example
 ```json
 {
   "id": "5da32f48accef147705f4dd4",
-  "movieId": "1",
-  "theaterId": "1",
+  "movieId": "5da32f48accef147705f4dd4",
+  "theaterId": "5da32f48accef147705f4dd4",
   "date": "4-OCT-2019",
   "time": "11.00",
   "status": true,

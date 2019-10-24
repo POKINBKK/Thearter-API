@@ -6,6 +6,7 @@ import com.theaterapi.model.Movie;
 import com.theaterapi.model.Showtime;
 //import com.theaterapi.model.User;
 import com.theaterapi.service.MovieService;
+import com.theaterapi.service.ShowtimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,8 @@ import java.util.Optional;
 public class MovieController {
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private ShowtimeService showtimeService;
 
     //Get all movie
     @GetMapping()
@@ -28,15 +31,13 @@ public class MovieController {
         return ResponseEntity.ok(movies);
     }
 
-    //get movie by movieId
+    //get movie by _id
     @GetMapping("/{id}")
     public ResponseEntity<?> getMoviebyId(@PathVariable String id) {
         Optional<Movie> movie = movieService.retrieveMovie(id);
         if(movie.equals(null)) {
             return ResponseEntity.badRequest().build();
         }
-//        System.out.println(((Movie) movie).get_id());
-        System.out.println(movie.get().get_id());
         return ResponseEntity.ok(movie);
     }
 
@@ -47,17 +48,26 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.CREATED).body(movie);
     }
 
-    //edit movie id
+    //edit movie _id
     @PutMapping("/{id}")
     public ResponseEntity<?> putMovie(@PathVariable String id, @RequestBody Movie body) {
         Optional<?> movie = movieService.updateMovie(id, body);
         return ResponseEntity.ok(movie);
     }
 
-    //delete movie id
+    //delete movie _id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable String id) {
-        if(!movieService.deleteMovie(id)) {
+        List<Showtime> showtimes = showtimeService.retrieveShowtimes();
+        Boolean flag = false;
+        for(Showtime tmpShow: showtimes){
+            if((tmpShow.getMovieId()).equals(id)){
+                flag = true;
+                break;
+            }
+        }
+        if(!movieService.deleteMovie(id) || flag) {
+            System.out.println(flag);
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok().build();

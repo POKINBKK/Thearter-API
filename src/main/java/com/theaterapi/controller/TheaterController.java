@@ -1,6 +1,8 @@
 package com.theaterapi.controller;
 
+import com.theaterapi.model.Showtime;
 import com.theaterapi.model.Theater;
+import com.theaterapi.service.ShowtimeService;
 import com.theaterapi.service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,10 +14,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/theater")
+@CrossOrigin(origins = "*")
 public class TheaterController {
 
     @Autowired
     private TheaterService theaterService;
+    @Autowired
+    private ShowtimeService showtimeService;
 
     //Get all theater
     @GetMapping()
@@ -27,7 +32,7 @@ public class TheaterController {
     //get theater by theaterid
     @GetMapping("/{id}")
     public ResponseEntity<?> getTheaterbyId(@PathVariable String id) {
-        List<Theater> theater = theaterService.retrieveTheater(id);
+        Optional<Theater> theater = theaterService.retrieveTheater(id);
         if(theater.equals(null)) {
             return ResponseEntity.badRequest().build();
         }
@@ -42,16 +47,24 @@ public class TheaterController {
     }
 
     //edit Theater
-    @PutMapping("/{id}")
-    public ResponseEntity<?> putTheater(@PathVariable String id, @RequestBody Theater body) {
-        Optional<?> theater = theaterService.updateTheater(id, body);
-        return ResponseEntity.ok(theater);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<?> putTheater(@PathVariable String id, @RequestBody Theater body) {
+//        Optional<?> theater = theaterService.updateTheater(id, body);
+//        return ResponseEntity.ok(theater);
+//    }
 
     //delete Theater
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable String id) {
-        if(!theaterService.deleteTheater(id)) {
+        List<Showtime> showtimes = showtimeService.retrieveShowtimes();
+        Boolean flag = false;
+        for(Showtime tmpShow: showtimes){
+            if((tmpShow.getTheaterId()).equals(id)){
+                flag = true;
+                break;
+            }
+        }
+        if(!theaterService.deleteTheater(id) || flag) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok().build();

@@ -13,27 +13,24 @@ package com.theaterapi.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Data
 public class Showtime {
     @Id
-    private String id;
+    @Indexed(unique=true)
+    private String _id;
     private String movieId;
     private String theaterId;
     private String date;
     private String time;
     private Boolean status;
     private List<String> availableSeats;
-    private List<String> unavailableSeats;
 
     public void setAvailableSeats(List<String> seats){
         this.availableSeats = seats;
-    }
-
-    public void setUnavailableSeats(List<String> seats){
-        this.unavailableSeats = seats;
     }
 
     public String getMovieId(){
@@ -52,15 +49,15 @@ public class Showtime {
         return time;
     }
 
-    public String getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
     public Boolean getStatus() {
         return status;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void set_id(String id) {
+        this._id = id;
     }
 }

@@ -8,6 +8,7 @@ package com.theaterapi.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -16,13 +17,14 @@ import java.util.List;
 @Data
 public class Theater {
     @Id
-    private String id;
+    @Indexed(unique=true)
+    private String _id;
     @NotNull
     private String theaterId;
     private List<String> seats;
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTheaterId(String id) {
+        this.theaterId = id;
     }
 
     public List<String> getSeats(){

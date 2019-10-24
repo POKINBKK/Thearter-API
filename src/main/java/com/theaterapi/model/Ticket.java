@@ -3,9 +3,14 @@ package com.theaterapi.model;
 import java.util.List;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 @Data
 public class Ticket {
+	@Id
+	@Indexed(unique=true)
+	private String _id;
 	private int movieId;
 	private int theaterId;
 	private String time;

@@ -37,14 +37,14 @@ public class ShowtimeService {
         return showtimeRepository.save(showtime);
     }
 
-    public Optional<Showtime> updateShowtime(String id, Showtime showtime) {
-        Optional<Showtime> showtimeOpt = showtimeRepository.findById(id);
-        if(!showtimeOpt.isPresent()) {
-            return showtimeOpt;
-        }
-        showtime.setId(id);
-        return Optional.of(showtimeRepository.save(showtime));
-    }
+//    public Optional<Showtime> updateShowtime(String id, Showtime showtime) {
+//        Optional<Showtime> showtimeOpt = showtimeRepository.findById(id);
+//        if(!showtimeOpt.isPresent()) {
+//            return showtimeOpt;
+//        }
+//        showtime.set_id(id);
+//        return Optional.of(showtimeRepository.save(showtime));
+//    }
 
     public boolean deleteShowtime(String id) {
         try {
