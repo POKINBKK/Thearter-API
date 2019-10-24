@@ -33,7 +33,6 @@ public class MovieService {
     //Get movie by movieId
     public Optional<Movie> retrieveMovie(String id) {
     	return movieRepository.findById(id);
-//        return movieRepository.findByMovieId(id);
     }
 
     //create Movie

@@ -19,11 +19,9 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class Movie {
-//    @Id
-//    private String id;
-    @Indexed(unique=true)
-    @Id
-    private String movieId;
+	@Id
+	@Indexed(unique=true)
+    private String _id;
     @NotNull
     private String movieName;
     @NotNull
@@ -33,13 +31,13 @@ public class Movie {
     private String movieLength;
     private String movieDescription;
 
-//    public void setId(String id) {
-//        this.id = id;
-//    }
+    public String get_id() {
+		return _id;
+	}
 
-    public String getMovieId() {
-        return movieId;
-    }
+	public void set_id(String _id) {
+		this._id = _id;
+	}
 
     public String getMovieName() {
         return movieName;

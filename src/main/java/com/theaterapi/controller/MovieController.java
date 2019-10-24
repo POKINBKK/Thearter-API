@@ -34,6 +34,8 @@ public class MovieController {
         if(movie.equals(null)) {
             return ResponseEntity.badRequest().build();
         }
+//        System.out.println(((Movie) movie).get_id());
+        System.out.println(movie.get().get_id());
         return ResponseEntity.ok(movie);
     }
 
