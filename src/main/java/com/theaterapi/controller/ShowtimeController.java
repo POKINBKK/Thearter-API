@@ -47,7 +47,7 @@ public class ShowtimeController {
             tmpRes.setStatus(tmp.getStatus());
             //This Part for movie Information
             for(Movie tmpMovie: movies){
-                if((tmpMovie.getMovieId()).equals(tmpRes.getMovieId())){
+                if((tmpMovie.get_id()).equals(tmpRes.getMovieId())){
                     movie = tmpMovie;
                 }
             }
@@ -88,7 +88,7 @@ public class ShowtimeController {
             tmpRes.setStatus(tmp.getStatus());
             //This Part for movie Information
             for(Movie tmpMovie: movies){
-                if((tmpMovie.getMovieId()).equals(tmpRes.getMovieId())){
+                if((tmpMovie.get_id()).equals(tmpRes.getMovieId())){
                     movie = tmpMovie;
                 }
             }
@@ -121,7 +121,7 @@ public class ShowtimeController {
             tmpRes.setStatus(tmp.getStatus());
             //This Part for movie Information
             for(Movie tmpMovie: movies){
-                if((tmpMovie.getMovieId()).equals(tmpRes.getMovieId())){
+                if((tmpMovie.get_id()).equals(tmpRes.getMovieId())){
                     movieDetail = tmpMovie;
                 }
             }

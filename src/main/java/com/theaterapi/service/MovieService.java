@@ -31,8 +31,8 @@ public class MovieService {
     }
 
     //Get movie by movieId
-    public Movie retrieveMovie(String id) {
-        return movieRepository.findByMovieId(id);
+    public Optional<Movie> retrieveMovie(String id) {
+    	return movieRepository.findById(id);
     }
 
     //create Movie
@@ -46,7 +46,7 @@ public class MovieService {
         if(!movieOpt.isPresent()) {
             return movieOpt;
         }
-        movie.setId(id);
+//        movie.setId(id);
         return Optional.of(movieRepository.save(movie));
     }
 

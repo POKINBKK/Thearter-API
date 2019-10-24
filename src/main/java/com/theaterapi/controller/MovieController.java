@@ -31,10 +31,12 @@ public class MovieController {
     //get movie by movieId
     @GetMapping("/{id}")
     public ResponseEntity<?> getMoviebyId(@PathVariable String id) {
-        Movie movie = movieService.retrieveMovie(id);
+        Optional<Movie> movie = movieService.retrieveMovie(id);
         if(movie.equals(null)) {
             return ResponseEntity.badRequest().build();
         }
+//        System.out.println(((Movie) movie).get_id());
+        System.out.println(movie.get().get_id());
         return ResponseEntity.ok(movie);
     }
 
