@@ -156,12 +156,6 @@ public class ShowtimeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(showtime);
     }
 
-    //edit Showtime
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> putShowtime(@PathVariable String id, @RequestBody Showtime body) {
-//        Optional<?> showtime = showtimeService.updateShowtime(id, body);
-//        return ResponseEntity.ok(showtime);
-//    }
 
     //delete Showtime by _id api/showtime?id={_id}
     @DeleteMapping(params = "id")
@@ -180,6 +174,13 @@ public class ShowtimeController {
         }
         return ResponseEntity.ok().build();
     }
+
+    //edit Showtime
+//    @PutMapping("/{id}")
+//    public ResponseEntity<?> putShowtime(@PathVariable String id, @RequestBody Showtime body) {
+//        Optional<?> showtime = showtimeService.updateShowtime(id, body);
+//        return ResponseEntity.ok(showtime);
+//    }
 
     //class for response of showtime
     private class ShowtimeResponse {

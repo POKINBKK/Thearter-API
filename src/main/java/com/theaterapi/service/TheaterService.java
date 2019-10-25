@@ -38,10 +38,10 @@ public class TheaterService {
 //	}
 
 	public boolean deleteTheater(String id) {
-		try {
+		if(theaterRepository.existsById(id)){
 			theaterRepository.deleteById(id);
 			return true;
-		} catch (Exception e) {
+		} else {
 			return false;
 		}
 	}

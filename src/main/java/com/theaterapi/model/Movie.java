@@ -35,6 +35,10 @@ public class Movie {
 		return _id;
 	}
 
+    public void set_id(String id) {
+        this._id = id;
+    }
+
     public String getMovieName() {
         return movieName;
     }

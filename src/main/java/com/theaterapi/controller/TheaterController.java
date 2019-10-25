@@ -46,13 +46,6 @@ public class TheaterController {
         return ResponseEntity.status(HttpStatus.CREATED).body(theater);
     }
 
-    //edit Theater
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> putTheater(@PathVariable String id, @RequestBody Theater body) {
-//        Optional<?> theater = theaterService.updateTheater(id, body);
-//        return ResponseEntity.ok(theater);
-//    }
-
     //delete Theater
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTheater(@PathVariable String id) {
@@ -64,10 +57,20 @@ public class TheaterController {
                 break;
             }
         }
-        if(!theaterService.deleteTheater(id) || flag) {
-            return ResponseEntity.badRequest().build();
+        if(!theaterService.deleteTheater(id)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete theater _id: %s :Cause this _id not in database", id));
+        } else if(flag) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete theater _id: %s :Cause this _id in use in showtime db", id));
+        } else{
+            return ResponseEntity.ok(String.format("Delete theater _id: %s Complete", id));
         }
-        return ResponseEntity.ok().build();
     }
+
+    //edit Theater not use because theater after construction should not change architecture
+//    @PutMapping("/{id}")
+//    public ResponseEntity<?> putTheater(@PathVariable String id, @RequestBody Theater body) {
+//        Optional<?> theater = theaterService.updateTheater(id, body);
+//        return ResponseEntity.ok(theater);
+//    }
 
 }

@@ -46,17 +46,17 @@ public class MovieService {
         if(!movieOpt.isPresent()) {
             return movieOpt;
         }
-//        movie.setId(id);
+        movie.set_id(id);
         return Optional.of(movieRepository.save(movie));
     }
 
     //delete movie by id
     public boolean deleteMovie(String id) {
-        try {
+        if(movieRepository.existsById(id)){
             movieRepository.deleteById(id);
             return true;
         }
-        catch (Exception e) {
+        else {
             return false;
         }
     }

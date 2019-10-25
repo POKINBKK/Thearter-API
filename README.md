@@ -301,10 +301,9 @@ Request example
 
 ```json
 {
-  "movieId": "2",
   "movieName": "The Matrix",
   "movieThumbnail": "picpath",
-  "movieReleaseDate": "24-OCT-2019",
+  "movieReleaseDate": "24-10-2019",
   "movieLength": "104",
   "movieDescription": "This is Short Description of This Film"
 }
@@ -314,13 +313,12 @@ Response example
 
 ```json
 {
-  "id": "5da32334accef147705f4dd1",
-  "movieId": "2",
-  "movieName": "The Matrix",
-  "movieThumbnail": "picpath",
-  "movieReleaseDate": "24-OCT-2019",
-  "movieLength": "104",
-  "movieDescription": "This is Short Description of This Film"
+    "_id": "5db2fab7accef10da071ca0d",
+    "movieName": "The Matrix",
+    "movieThumbnail": "picpath",
+    "movieReleaseDate": "24-10-2019",
+    "movieLength": "104",
+    "movieDescription": "This is Short Description of This Film"
 }
 ```
 
@@ -333,10 +331,9 @@ Request example
 
 ```json
 {
-  "movieId": "2",
   "movieName": "The Matrix",
   "movieThumbnail": "picpath",
-  "movieReleaseDate": "24-OCT-2019",
+  "movieReleaseDate": "24-10-2019",
   "movieLength": "120",
   "movieDescription": "This is Short Description of This Film"
 }
@@ -346,11 +343,10 @@ Response example
 
 ```json
 {
-  "id": "5da32334accef147705f4dd1",
-  "movieId": "2",
+  "_id": "5db2fb23accef10da071ca0e",
   "movieName": "The Matrix",
   "movieThumbnail": "picpath",
-  "movieReleaseDate": "24-OCT-2019",
+  "movieReleaseDate": "24-10-2019",
   "movieLength": "120",
   "movieDescription": "This is Short Description of This Film"
 }

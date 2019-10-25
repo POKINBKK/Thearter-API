@@ -47,21 +47,19 @@ public class ShowtimeService {
 //    }
 
     public boolean deleteShowtime(String id) {
-        try {
+        if(showtimeRepository.existsById(id)) {
             showtimeRepository.deleteById(id);
             return true;
-        }
-        catch (Exception e) {
+        } else {
             return false;
         }
     }
 
     public boolean deleteShowtimebyDate(String date) {
-        try {
+        if(showtimeRepository.existsByDate(date)) {
             showtimeRepository.deleteByDate(date);
             return true;
-        }
-        catch (Exception e) {
+        } else {
             return false;
         }
     }
