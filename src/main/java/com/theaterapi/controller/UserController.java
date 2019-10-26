@@ -34,10 +34,11 @@ public class UserController {
 //	Ticket History by user
 	@GetMapping("/{username}")
 	public ResponseEntity<?> getHistory(@PathVariable String username) {
-		Optional<?>ticket = userService.retrieveUserTicketbyUsername(username);
-		if (!ticket.isPresent()) {
+		Optional<?> user = userService.retrieveUserTicketbyUsername(username);
+		if (!user.isPresent()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot get user username: %s :Cause this username not in database", username));
 		}
+		List<Ticket> ticket = ticketService.retrieveTicketsByUsername(username);
 		return ResponseEntity.ok(ticket);
 	}
 

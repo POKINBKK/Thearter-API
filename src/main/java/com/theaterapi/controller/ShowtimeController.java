@@ -63,8 +63,8 @@ public class ShowtimeController {
     }
 
     //get showtime by _id
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getShowtime(@PathVariable String id) {
+    @GetMapping(params = "id")
+    public ResponseEntity<?> getShowtime(@RequestParam String id) {
         //For Retrieve Information
         Optional<Showtime> showtime = showtimeService.retrieveShowtime(id);
         if(!showtime.isPresent()){

@@ -22,6 +22,10 @@ public class TicketService {
         return ticketRepository.findAll();
     }
 
+    public List<Ticket> retrieveTicketsByUsername(String username) {
+        return ticketRepository.findByUsername(username);
+    }
+
     public Optional<Ticket> retrieveTicket(String id) {
         return ticketRepository.findById(id);
     }
