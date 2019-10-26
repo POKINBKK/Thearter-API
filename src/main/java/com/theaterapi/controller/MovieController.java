@@ -66,11 +66,12 @@ public class MovieController {
                 break;
             }
         }
-        if(!movieService.deleteMovie(id)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete movie _id: %s :Cause this _id not in database", id));
-        } else if(flag) {
+        if(flag) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete movie _id: %s :Cause this _id in use in showtime db", id));
-        } else{
+        } else if(!movieService.deleteMovie(id)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete movie _id: %s :Cause this _id not in database", id));
+        }
+        else{
             return ResponseEntity.ok(String.format("Delete movie _id: %s Complete", id));
         }
     }

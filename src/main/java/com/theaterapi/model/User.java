@@ -17,13 +17,13 @@ public class User {
 	@Id
 	@Indexed(unique=true)
 	private String username;
-	private List<Ticket> tickets;
+	private List<String> tickets;
 	
-	public List<Ticket> getTickets() {
+	public List<String> getTickets() {
 		return tickets;
 	}
 
-	public void setTickets(List<Ticket> tickets) {
+	public void setTickets(List<String> tickets) {
 		this.tickets = tickets;
 	}
 	public String getUsername() {

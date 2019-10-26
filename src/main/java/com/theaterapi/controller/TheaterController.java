@@ -57,11 +57,12 @@ public class TheaterController {
                 break;
             }
         }
-        if(!theaterService.deleteTheater(id)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete theater _id: %s :Cause this _id not in database", id));
-        } else if(flag) {
+        if(flag) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete theater _id: %s :Cause this _id in use in showtime db", id));
-        } else{
+        } else if(!theaterService.deleteTheater(id)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete theater _id: %s :Cause this _id not in database", id));
+        }
+        else {
             return ResponseEntity.ok(String.format("Delete theater _id: %s Complete", id));
         }
     }

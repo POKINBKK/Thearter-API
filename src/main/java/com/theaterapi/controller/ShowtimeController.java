@@ -67,6 +67,9 @@ public class ShowtimeController {
     public ResponseEntity<?> getShowtime(@PathVariable String id) {
         //For Retrieve Information
         Optional<Showtime> showtime = showtimeService.retrieveShowtime(id);
+        if(!showtime.isPresent()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot get This showtime :Cause this _id not in database");
+        }
         return ResponseEntity.ok(showtime);
     }
 
@@ -99,6 +102,9 @@ public class ShowtimeController {
             tmpRes.setMovieLength(movie.getMovieLength());
             tmpRes.setMovieDescription(movie.getMovieDescription());
             responseList.add(tmpRes);
+        }
+        if(responseList.isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot get This showtime :Cause this theater _id not in database or no showtime in this theater");
         }
         return ResponseEntity.ok(responseList);
     }
@@ -133,6 +139,9 @@ public class ShowtimeController {
             tmpRes.setMovieDescription(movieDetail.getMovieDescription());
             responseList.add(tmpRes);
         }
+        if(responseList.isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot get This showtime :Cause this movie _id not in database or no showtime use this movie");
+        }
         return ResponseEntity.ok(responseList);
     }
 
@@ -140,18 +149,21 @@ public class ShowtimeController {
     @PostMapping()
     public ResponseEntity<?> postShowtime(@RequestBody Showtime body) {
         Showtime tmp = body;
-        String theaterid = tmp.getTheaterId();
         List<Showtime> showtimes = showtimeService.retrieveShowtimes();
-        for(Showtime tmpshow: showtimes){
-            if((tmpshow.getTheaterId()).equals(body.getTheaterId()) && (tmpshow.getDate()).equals(body.getDate()) && (tmpshow.getTime()).equals(body.getTime())){
-                return ResponseEntity.badRequest().build();
-            }
+        Optional<Theater> theater = theaterService.retrieveTheater(tmp.getTheaterId());
+        if(!theater.isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot select theater _id: %s :Cause this _id not in database", tmp.getTheaterId()));
         }
-        Optional<Theater> theater = theaterService.retrieveTheater(theaterid);
-        if(theater.equals(null)) {
-            return ResponseEntity.badRequest().build();
+        Optional<Movie> movie = movieService.retrieveMovie(tmp.getMovieId());
+        if(!movie.isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot select movie _id: %s :Cause this _id not in database", tmp.getMovieId()));
         }
         tmp.setAvailableSeats(theater.get().getSeats());
+        for(Showtime tmpshow: showtimes){
+            if((tmpshow.getTheaterId()).equals(tmp.getTheaterId()) && (tmpshow.getDate()).equals(tmp.getDate()) && (tmpshow.getTime()).equals(tmp.getTime())){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cannot add This showtime :Cause this time in this theater already in database");
+            }
+        }
         Showtime showtime = showtimeService.createShowtime(tmp);
         return ResponseEntity.status(HttpStatus.CREATED).body(showtime);
     }
@@ -161,18 +173,18 @@ public class ShowtimeController {
     @DeleteMapping(params = "id")
     public ResponseEntity<?> deleteShowtime(@RequestParam String id) {
         if(!showtimeService.deleteShowtime(id)) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete showtime _id: %s :Cause this _id not in database", id));
         }
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(String.format("Delete showtime _id: %s Complete", id));
     }
 
     //delete Showtime by Date api/showtime?date={date}
     @DeleteMapping(params = "date")
     public ResponseEntity<?> deleteShowtimebyDate(@RequestParam String date) {
         if(!showtimeService.deleteShowtimebyDate(date)) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Cannot delete showtime date: %s :Cause this date not in database", date));
         }
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(String.format("Delete showtime date: %s Complete", date));
     }
 
     //edit Showtime

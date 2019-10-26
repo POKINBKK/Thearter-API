@@ -11,54 +11,32 @@ public class Ticket {
 	@Id
 	@Indexed(unique=true)
 	private String _id;
-	private int movieId;
-	private int theaterId;
-	private String time;
-	private String date;
+	private String username;
+	private String showtimeId;
 	private List<String> seats;
 
-	public Ticket() {
+	public String getUsername() {
+		return username;
 	}
 
-	public Ticket(int movieId, int theaterId, String time, String date, List<String> seats) {
-		super();
-		this.movieId = movieId;
-		this.theaterId = theaterId;
-		this.time = time;
-		this.date = date;
-		this.seats = seats;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public int getMovieId() {
-		return movieId;
+	public String get_id() {
+		return _id;
 	}
 
-	public void setMovieId(int movieId) {
-		this.movieId = movieId;
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 
-	public int getTheaterId() {
-		return theaterId;
+	public String getShowtimeId() {
+		return showtimeId;
 	}
 
-	public void setTheaterId(int theaterId) {
-		this.theaterId = theaterId;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
+	public void setShowtimeId(String showtimeId) {
+		this.showtimeId = showtimeId;
 	}
 
 	public List<String> getSeats() {
@@ -66,6 +44,14 @@ public class Ticket {
 	}
 
 	public void setSeats(List<String> seats) {
+		this.seats = seats;
+	}
+
+	public Ticket() {
+	}
+
+	public Ticket(String showtimeId, List<String> seats) {
+		this.showtimeId = showtimeId;
 		this.seats = seats;
 	}
 }
