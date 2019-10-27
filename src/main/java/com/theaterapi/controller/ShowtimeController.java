@@ -188,11 +188,11 @@ public class ShowtimeController {
     }
 
     //edit Showtime
-//    @PutMapping("/{id}")
-//    public ResponseEntity<?> putShowtime(@PathVariable String id, @RequestBody Showtime body) {
-//        Optional<?> showtime = showtimeService.updateShowtime(id, body);
-//        return ResponseEntity.ok(showtime);
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> putShowtime(@PathVariable String id, @RequestBody Showtime body) {
+        Optional<?> showtime = showtimeService.updateShowtime(id, body);
+        return ResponseEntity.ok(showtime);
+    }
 
     //class for response of showtime
     private class ShowtimeResponse {
