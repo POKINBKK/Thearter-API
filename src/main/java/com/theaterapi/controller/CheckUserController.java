@@ -31,7 +31,7 @@ public class CheckUserController {
         HashMap<String, String> map = new HashMap<>();
         if(authentication.getName() != "anonymousUser"){
             String token = JwtUtil.generateToken("userSigning", authentication.getName());
-            CookieUtil.create(httpServletResponse, "jwt-token", token, false, -1, "http://theaterapi-env.ztbw4evbna.ap-southeast-1.elasticbeanstalk.com");
+            CookieUtil.create(httpServletResponse, "jwt-token", token, false, -1, "34.87.24.186");
         }
         map.put("user", authentication.getName());
         return map;
