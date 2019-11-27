@@ -27,7 +27,6 @@ import java.util.Map;
 public class Login {
     @RequestMapping("/login")
     public ResponseEntity<Object> home(Principal principal, HttpServletResponse httpServletResponse)  throws URISyntaxException {
-//    public Map<String, String> home(Principal principal, HttpServletResponse httpServletResponse){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(authentication.getName());
 
@@ -37,11 +36,16 @@ public class Login {
             CookieUtil.create(httpServletResponse, "jwt-token", token, false, -1, "34.87.24.186");
         }
         map.put("user", authentication.getName());
-//        return  map;
-        URI yahoo = new URI("http://34.87.24.186/");
+        URI mainsite = new URI("http://34.87.24.186/");
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setLocation(yahoo);
+        httpHeaders.setLocation(mainsite);
         return new ResponseEntity<>(httpHeaders, HttpStatus.SEE_OTHER);
-
+    }
+    @RequestMapping("/")
+    public ResponseEntity<Object> OpenWeb()throws URISyntaxException {
+        URI mainsite = new URI("http://34.87.24.186/");
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setLocation(mainsite);
+        return new ResponseEntity<>(httpHeaders, HttpStatus.SEE_OTHER);
     }
 }
