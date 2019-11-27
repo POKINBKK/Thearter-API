@@ -50,7 +50,7 @@ public class SecurityConfiguration {
             http
                     .antMatcher("/**")
                     .authorizeRequests()
-                    .antMatchers("/login/").authenticated()
+                    .antMatchers("/login").authenticated()
                     .and()
                     .formLogin()
 //                    .loginPage("saml/sp/discovery/saml/sp/discovery?idp=spring.security.saml.idp.id")
