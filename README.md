@@ -11,8 +11,8 @@ Repository for Service Oriented Programming | ITKMITL 2019
 
 # Showtime Service
 
-### List all Showtimes
-URL : `/api/showtime`
+### Get all Showtimes
+URL : `/showtime`
 
 Method : `GET`
 
@@ -75,8 +75,8 @@ Response example
 ]
 ```
 
-### List all Showtimes by TheaterId
-URL : `/api/showtime?theater={theaterId}`
+### Get all Showtimes by TheaterId
+URL : `/showtime?theater={theaterId}`
 
 Method : `GET`
 
@@ -113,9 +113,9 @@ Response example
 ]
 ```
 
-### List all Showtimes by MovieId
+### Get all Showtimes by MovieId
 
-URL : `/api/showtime?movie={movieId}`
+URL : `/showtime?movie={movieId}`
 
 Method : `GET`
 
@@ -179,7 +179,7 @@ Response example
 ```
 
 ### Get Showtime by Id
-URL : `/api/showtime?id={id}`
+URL : `/showtime?id={id}`
 
 Method : `GET`
 
@@ -197,8 +197,8 @@ Response example
 }
 ```
 
-### Delete All Showtime by Date
-URL : `/api/showtime?date={date}`
+### Delete Showtime by Date
+URL : `/showtime?date={date}`
 
 Method : `DELETE`
 
@@ -209,7 +209,7 @@ Delete showtime date: {date} Complete
 ```
 
 ### Add Showtime
-URL : `/api/showtime`
+URL : `/showtime`
 
 Method : `POST`
 
@@ -240,7 +240,7 @@ Response example
 ```
 
 ### Delete Showtime by Id
-URL : `/api/showtime?id={id}`
+URL : `/showtime?id={id}`
 
 Method : `DELETE`
 
@@ -252,8 +252,8 @@ Delete showtime _id: {_id} Complete
 
 # Movie Service
 
-### List all Movie Information
-URL : `/api/movie`
+### Get all Movie Information
+URL : `/movie`
 
 Method : `GET`
 
@@ -280,8 +280,8 @@ Response example
 ]
 ```
 
-### Show Movie Information by MovieId
-URL : `/api/movie/{_id}`
+### Get all Movies Information by id
+URL : `/movie/{_id}`
 
 Method : `GET`
 
@@ -300,8 +300,8 @@ Response example
 
 ```
 
-### Add Movie Information
-URL : `/api/movie`
+### Add Movie
+URL : `/movie`
 
 Method : `POST`
 
@@ -330,8 +330,8 @@ Response example
 }
 ```
 
-### Edit Movie Information
-URL : `/api/movie/{id}`
+### Edit Movie
+URL : `/movie/{id}`
 
 Method : `PUT`
 
@@ -360,8 +360,8 @@ Response example
 }
 ```
 
-### Delete Movie Information
-URL : `/api/movie/{id}`
+### Delete Movie
+URL : `/movie/{id}`
 
 Method : `DELETE`
 
@@ -369,7 +369,7 @@ Method : `DELETE`
 # Theater Service
 
 ### Add Theater
-URL : `/api/theater`
+URL : `/theater`
 
 Method : `POST`
 
@@ -393,7 +393,7 @@ Response example
 ```
 
 ### Get Theater
-URL : `/api/theater`
+URL : `/theater`
 
 Method : `Get`
 
@@ -415,7 +415,7 @@ Response example
 ```
 
 ### Get Theater detail by id
-URL : `/api/theater/{_id}`
+URL : `/theater/{_id}`
 
 Method : `GET`
 
@@ -430,7 +430,7 @@ Response example
 ```
 
 ### Delete Theater
-URL : `/api/theater/{_id}`
+URL : `/theater/{_id}`
 
 Method : `DELETE`
 
@@ -442,8 +442,8 @@ Delete theater _id: {_id} Complete
 
 # User Service
 
-### Get all User's Tickets information
-URL : `/api/u`
+### Get User's information
+URL : `/u`
 
 Method : `GET`
 
@@ -468,8 +468,8 @@ Response example
 ]
 ```
 
-### User History
-URL : `/api/u/{username}`
+### Get User's Ticket
+URL : `/u/{username}`
 
 Method : `GET`
 
@@ -499,7 +499,7 @@ Response example
 ```
 
 ### Reserve
-URL : `/api/u`
+URL : `/u`
 
 Method : `POST`
 
@@ -525,8 +525,8 @@ Response example
 }
 ```
 
-### Show all Ticket in Database
-URL : `/api/u/ticket`
+### Get all Ticket
+URL : `/u/ticket`
 
 Method : `GET`
 
@@ -574,7 +574,7 @@ Response example
 ```
 
 ### Delete Ticket
-URL : `/api/u/ticket/{id}`
+URL : `/u/ticket/{id}`
 
 Method : `DELETE`
 
