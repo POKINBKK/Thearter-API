@@ -584,6 +584,8 @@ go to website
 
 [DionCineplex](http://34.87.24.186/)
 
+> Note : This website is only intended to show the work of api. It can't to booking movies in real life and does not support responsive.
+
 ## Page
 
 ### Main Page : /
