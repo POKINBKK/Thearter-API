@@ -586,6 +586,8 @@ go to website
 
 > Note : This website is only intended to show the work of api. It can't to booking movies in real life and does not support responsive.
 
+[Fontend Github](https://github.com/anusornleo/SOP-cinema-vue-by-pok.git)
+
 ## Page
 
 ### Main Page : /
