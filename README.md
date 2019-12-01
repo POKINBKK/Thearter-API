@@ -584,9 +584,9 @@ go to website
 
 [DionCineplex](http://34.87.24.186/)
 
-[Fontend Github](https://github.com/anusornleo/SOP-cinema-vue-by-pok.git)
+[Frontend Github](https://github.com/anusornleo/SOP-cinema-vue-by-pok.git)
 
-### Username for Admin
+### Account for Admin
 **username** adminmovie
 
 **password** adminmovie
